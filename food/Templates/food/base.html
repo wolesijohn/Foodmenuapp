@@ -15,8 +15,23 @@
             <a class="nav-item nav-link" href="{% url 'food:create_item' %}">Add Item</a>
             <a class="nav-item nav-link" href="#">Delete Item</a>
             <a class="nav-item nav-link" href="#">View Item</a>
+            {% if user.is_authenticated %}
+                <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+            {% else %}
+                <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+                <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
+            {% endif %}
         </div>
     </nav>
+    {% if messages %}
+        <div class="container mt-4">
+            {% for message in messages %}
+                <div class="alert alert-success" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
     {% block body %}
     {% endblock %}
     
