@@ -6,5 +6,5 @@ class profile(models.Model):
     image = models.ImageField(default='profilepics.jpg', upload_to='profile_pics')
     location = models.CharField(max_length=100)
     def __str__(self):
-        return user.username
+        return self.user.username
     
